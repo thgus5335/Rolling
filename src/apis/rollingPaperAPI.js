@@ -1,7 +1,4 @@
-// import axios from 'axios';
 import instance from '../utils/axios';
-// import { BASE_URL } from '../constants/constants';
-// import { DELETE_URL } from '../constants/constants';
 
 const getRequest = async endPoint => {
   try {

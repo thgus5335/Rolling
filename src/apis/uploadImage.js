@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import instance from '../utils/axios';
 const API_URL = 'https://api.imgur.com/3/image';
 
