@@ -1,9 +1,8 @@
-import axios from 'axios';
-import { BASE_URL } from '../constants/constants';
+import instance from '../utils/axios';
 
 export const getRecentApi = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}?limit=100`);
+    const response = await instance.get('/recipients/?limit=100');
     return response.data;
   } catch (error) {
     console.log(error);
@@ -12,7 +11,7 @@ export const getRecentApi = async () => {
 
 export const getHotApi = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}?limit=100&sort=like`);
+    const response = await instance.get('/recipients/?limit=100&sort=like');
     return response.data;
   } catch (error) {
     console.log(error);

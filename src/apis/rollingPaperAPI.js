@@ -1,10 +1,11 @@
-import axios from 'axios';
-import { BASE_URL } from '../constants/constants';
-import { DELETE_URL } from '../constants/constants';
+// import axios from 'axios';
+import instance from '../utils/axios';
+// import { BASE_URL } from '../constants/constants';
+// import { DELETE_URL } from '../constants/constants';
 
 const getRequest = async endPoint => {
   try {
-    const response = await axios.get(`${BASE_URL}${endPoint}`);
+    const response = await instance.get(`/recipients/${endPoint}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -15,7 +16,7 @@ const getRequest = async endPoint => {
 
 const deleteRequest = async endPoint => {
   try {
-    const response = await axios.delete(`${DELETE_URL}${endPoint}`);
+    const response = await instance.delete(`/${endPoint}`);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -55,6 +56,6 @@ export const postReaction = async (recipientId, emoji) => {
     emoji: emoji,
     type: 'increase',
   };
-  const response = await axios.post(`${BASE_URL}${recipientId}/reactions/`, postData);
+  const response = await instance.post(`/recipients/${recipientId}/reactions/`, postData);
   return response.emoji;
 };

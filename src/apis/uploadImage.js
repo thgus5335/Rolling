@@ -1,5 +1,5 @@
-import axios from 'axios';
-
+// import axios from 'axios';
+import instance from '../utils/axios';
 const API_URL = 'https://api.imgur.com/3/image';
 
 const uploadImage = async ({ file }) => {
@@ -10,7 +10,7 @@ const uploadImage = async ({ file }) => {
   formData.append('image', file);
 
   try {
-    const response = await axios.post(API_URL, formData, {
+    const response = await instance.post(API_URL, formData, {
       headers: {
         Authorization: auth,
         'Content-Type': 'multipart/form-data',
