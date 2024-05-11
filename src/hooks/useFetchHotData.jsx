@@ -3,7 +3,7 @@ import { getHotApi } from '../apis/getRecentHotApi';
 
 const useFetchHotData = () => {
   const { data: hotData, status } = useQuery({
-    queryKey: 'hotData',
+    queryKey: ['hotData'],
     queryFn: async () => {
       const response = await getHotApi();
       return response.results;
