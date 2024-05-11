@@ -74,7 +74,7 @@ const CommonSection = ({ title, data }) => {
     <section className={styles.commonSection}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.container} ref={containerRef}>
-        {!!data.length && (
+        {!!data && (
           <div className={styles.cardFlex} style={style}>
             {data.map(card => (
               <Link to={`/post/${card.id}`} key={card.id}>
