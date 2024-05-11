@@ -1,20 +1,14 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { getHotApi } from '../apis/getRecentHotApi';
 
 const useFetchHotData = () => {
-  const [hotData, setHotData] = useState([]);
-
-  const fetchHotData = async () => {
+  const { data: hotData, status } = useQuery('hotData', async () => {
     const response = await getHotApi();
-    const hotSortedData = response.results;
-    setHotData(hotSortedData);
-  };
+    return response.results;
+  });
 
-  useEffect(() => {
-    fetchHotData();
-  }, []);
-
-  return { hotData };
+  return { hotData, status };
 };
 
 export default useFetchHotData;
